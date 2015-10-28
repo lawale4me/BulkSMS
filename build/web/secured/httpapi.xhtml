@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<ui:composition template="layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"                
+                >
+
+    <ui:define name="title">HTTP API</ui:define>
+    <ui:define name="content">                             
+
+        <h:form id="form">                                                   
+            <br/>
+            
+            <b>SEND SMS HTTP URL:</b><br/>
+            <h3>http://sms.smssolutions.com.ng:8180/BulkSMS/SendSMS?</h3>            
+             PARAMETERS:    <br/>        
+            <b>username</b> xxxxxx<br/>
+            <b>password</b> xxxxxx<br/>
+            <b>header</b>   xxxxxx<br/>
+            <b>destAddr</b> 234xxxxxxx<br/>
+            <b>message</b>  xxxxxx   <br/>                
+            <hr/>
+            <hr/>
+            <br/>
+            <b>CHECK BALANCE API HTTP URL:</b><br/>
+            <h3>http://sms.smssolutions.com.ng:8180/BulkSMS/CheckBalance?</h3>            
+             PARAMETERS:    <br/>        
+            <b>username</b> xxxxxx<br/>
+            <b>password</b> xxxxxx<br/>                        
+            <hr/>
+            <hr/>
+            
+        </h:form>
+
+
+    </ui:define>
+</ui:composition>

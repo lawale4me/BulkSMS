@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<ui:composition template="layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"  
+                xmlns:p="http://primefaces.org/ui"
+                >
+
+    <ui:define name="title">Customer</ui:define>
+    <ui:define name="content">                             
+
+   
+          <h:form id="form1">
+            <p:growl id="messages" showDetail="true"/>
+            <p:panel header="Customer" style="width: 1000px;"> 
+                <p:panelGrid columns="2">
+                    <h:outputLabel for="userName" value="User Name: " />
+                    <p:inputText  value="#{customerMBean.userName}" required="true"
+                                  maxlength="11"
+                                  tabindex="Maximum 11 characters. Can be Alphanumeric"
+                                  title="Maximum 11 characters. Can be Alphanumeric"
+                                  placeholder="Maximum 11 characters. Can be Alphanumeric"
+                                  requiredMessage="Username  cannot be blank"/>
+                    <h:outputLabel for="passwd"   value="Password " />
+                    <p:password match="cpasswd"  value="#{customerMBean.passwd}" required="true"                                 
+                                requiredMessage="Password cannot be blank"/>
+                    <h:outputLabel for="cpasswd" value="Confirm Password " />
+                    <p:password id="cpasswd"  value="#{customerMBean.cpasswd}" required="true" 
+                                requiredMessage="Confirm Password cannot be blank"/>
+                    <h:outputLabel for="fname" value="First Name " />
+                    <p:inputText value="#{customerMBean.fname}" required="true"
+                                 requiredMessage="First Name cannot be blank"/>
+                    <h:outputLabel for="lname" value="Surname " />
+                    <p:inputText  value="#{customerMBean.lname}" required="true"
+                                  requiredMessage="Last Name cannot be blank"/>
+                    <h:outputLabel for="email" value="Email " />
+                    <p:inputText  value="#{customerMBean.email}" required="true"
+                                  requiredMessage="Email  cannot be blank"/>                    
+                    <h:outputLabel for="phone" value="Phone " />
+                    <p:inputText  value="#{customerMBean.phone}" required="true"
+                                  maxlength="13"
+                                  tabindex="Enter your number in format 2348xxx or 2347xxx"
+                                  title="Enter your number in format 2348xxx or 2347xxx"
+                                  placeholder="Enter your number in format 2348xxx or 2347xxx"
+                                  requiredMessage="Phone number cannot be blank"
+                                  validatorMessage="Phone field must begin with 234 and should be a valid number"
+                                  >
+                                        <f:validateRegex pattern="^(2348|2347|2349)[0-9]{9}$" />
+                    </p:inputText>
+                    <f:facet name="footer">
+                        <h:commandButton value="Add Customer" action="#{customerMBean.addAction}"/>
+                    </f:facet>
+                </p:panelGrid>
+                <p:spacer height="30px;"/>
+                <p:dataTable value="#{customerMBean.customerList}" var="cust" 
+                        widgetVar="50" style="width: 1000px;" editable="true"
+                        resizableColumns="true"
+                        rowKey="#{cust.customerId}" rows="10" paginator="true" >
+                    <f:facet name="header">                                                  
+                        Summary Count:<h:outputText value="#{customerMBean.customerList.size()}" />            
+                    </f:facet>
+                    <p:ajax event="rowEdit" listener="#{customerMBean.onEdit}" update=":form1:messages" />  
+                    <p:ajax event="rowEditCancel" listener="#{customerMBean.onCancel}" update=":form1:messages" /> 
+                    
+                    <p:column filterBy="#{cust.firstName}">
+                        <f:facet name="header">  
+                            <h:outputText value="First Name" />  
+                        </f:facet>
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{cust.firstName}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{cust.firstName}" style="width:100%"/>  
+                            </f:facet>  
+                        </p:cellEditor> 
+                    </p:column>
+                    <p:column filterBy="#{cust.lastName}">
+                        <f:facet name="header">  
+                            <h:outputText value="Last Name" />  
+                        </f:facet>
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{cust.lastName}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{cust.lastName}" style="width:100%"/>  
+                            </f:facet>  
+                        </p:cellEditor> 
+                    </p:column>
+                    
+                    
+                    <p:column filterBy="#{cust.username}">
+                        <f:facet name="header">  
+                            <h:outputText value="UserName" />  
+                        </f:facet>
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{cust.username}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{cust.username}" style="width:100%"/>  
+                            </f:facet>  
+                        </p:cellEditor> 
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">  
+                            <h:outputText value="Email" />  
+                        </f:facet>
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{cust.email}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{cust.email}" style="width:100%"/>  
+                            </f:facet>  
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column filterBy="#{cust.phone}">
+                        <f:facet name="header">  
+                            <h:outputText value="Phone" />  
+                        </f:facet>
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{cust.phone}"  />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{cust.phone}" style="width:100%"/>  
+                            </f:facet>  
+                        </p:cellEditor>
+                    </p:column>               
+                   
+
+                    <p:column headerText="Options" style="width:50px">  
+                        <p:rowEditor />  
+                    </p:column> 
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+
+
+    </ui:define>
+</ui:composition>

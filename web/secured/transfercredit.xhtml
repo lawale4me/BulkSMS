@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<ui:composition template="layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"        
+                xmlns:p="http://primefaces.org/ui"
+                >
+
+    <ui:define name="title">Transfer Credit</ui:define>
+    <ui:define name="content">                             
+
+      <h:form>
+            <p:growl id="messages" showDetail="true" autoUpdate="true"  />
+            <table width="40%" align="center" style="margin: 60px 0px 0px 120px">
+                <tr>
+                    <td style="color: RED">Credits Transferred are not reversible</td>
+                </tr>
+                <tr>
+                    <td id="top" align="center">
+                        <p:panelGrid id="panel" columns="2" style="alignment-adjust: middle">
+                            <f:facet name="header">Transfer Credit</f:facet>
+                            <h:outputLabel for="cust" value="Username " />                            
+                            <p:inputText id="cust" value="#{transferMBean.cUsername}" label="cust" 
+                                 required="true" style="width:200px; height: 15px"
+                                 maxlength="11"    requiredMessage="Please enter a valid Customer"/>
+
+                            <h:outputLabel for="amount" value="Units " />
+                            <p:inputText id="amount" value="#{transferMBean.amount}" label="amount" 
+                                 required="true" style="width:200px; height: 15px"
+                                 maxlength="11"    requiredMessage="Please enter a valid amount"/>
+                            
+                            <h:outputLabel for="purpose" value="Description " />
+                            <p:inputText id="purpose" value="#{transferMBean.purpose}" label="purpose" 
+                                 required="true" style="width:200px; height: 15px"
+                                  requiredMessage="Please enter a valid Description"/>                            
+                            
+                            <f:facet name="footer">
+                            <p:commandButton icon="ui-icon-locked"  value="Transfer"
+                                             update="messages"   action="#{transferMBean.transferCredit()}" >
+                                <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                            
+                            <p:commandButton value="Reset" update="panel" process="@this" actionListener="#{transferMBean.reset}"  style="margin-right:20px;" />
+                           <br/>
+                            <h:selectBooleanCheckbox id="agree"  requiredMessage="You must agree!">
+                                <f:validator validatorId="requiredCheckboxValidator" />
+                            </h:selectBooleanCheckbox>
+                            <br/>
+                            I Agree:<br/>
+                            To the terms of service and that Credits transferred are not reversible.    
+                           <br/>                            
+                            
+ 
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+                                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
+                                
+                              
+                            </f:facet>
+                        </p:panelGrid>
+                    </td>
+                </tr>
+            </table>
+            
+            
+        </h:form>
+
+
+    </ui:define>
+</ui:composition>

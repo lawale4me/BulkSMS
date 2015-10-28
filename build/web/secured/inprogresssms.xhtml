@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<ui:composition template="layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"  
+                xmlns:p="http://primefaces.org/ui"
+                >
+
+    <ui:define name="title">In progress</ui:define>
+    <ui:define name="content">                             
+
+   
+          <h:form id="form1">
+            <p:growl id="messages" showDetail="true"/>
+            <p:panel header="Customer" style="width: 1000px;"> 
+                <p:dataTable value="#{reportMBean.inprogressList}" var="msg" 
+                        widgetVar="50" style="width: 1000px;" editable="true"
+                        resizableColumns="true"
+                        rowKey="#{msg.msgId}" rows="10" paginator="true" >
+                    <f:facet name="header">                                                  
+                        Summary Count:<h:outputText value="#{reportMBean.inprogressList.size()}" />            
+                    </f:facet>
+                    
+                    <p:column headerText="Number" filterBy="#{msg.destAddress}" >
+                         <h:outputText value="#{msg.destAddress}" />                            
+                    </p:column>
+
+                    <p:column headerText="Header" filterBy="#{msg.header}">
+                         <h:outputText value="#{msg.header}" />                              
+                    </p:column>  
+                    
+                    <p:column headerText="Message">
+                        <h:outputText value="#{msg.message}" />                              
+                    </p:column>     
+                    
+                    <p:column headerText="Submitted Date" filterBy="#{msg.msgDate}">                        
+                        <h:outputText value="#{msg.msgDate}" />                          
+                    </p:column>
+                    
+                    <p:column headerText="Sent Date">                        
+                         <h:outputText value="#{msg.sendDate}" />                          
+                    </p:column>                    
+                    
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+
+
+    </ui:define>
+</ui:composition>

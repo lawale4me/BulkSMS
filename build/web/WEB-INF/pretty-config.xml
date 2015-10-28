@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<pretty-config xmlns="http://ocpsoft.org/prettyfaces/3.3.3" 
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+               xsi:schemaLocation="http://ocpsoft.org/prettyfaces/3.3.3  http://ocpsoft.org/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.3.xsd">
+   
+   
+   <url-mapping id="quickteller">
+        <pattern value="/quickteller" />
+        <view-id value="/faces/admin/quickteller.xhtml"/>        
+    </url-mapping>
+        
+    <url-mapping id="httpapi">
+        <pattern value="/httpapi" />
+        <view-id value="/faces/secured/httpapi.xhtml"/>        
+    </url-mapping>
+        
+    <url-mapping id="paytobank">
+        <pattern value="/paytobank" />
+        <view-id value="/faces/secured/paytobank.xhtml"/>        
+    </url-mapping>
+    
+    <url-mapping id="customers">
+        <pattern value="/customers" />
+        <view-id value="/faces/secured/customers.xhtml"/>        
+    </url-mapping>
+    
+    
+    
+    <url-mapping id="topupcredit">
+        <pattern value="/topupcredit" />
+        <view-id value="/faces/secured/topupcredit.xhtml"/>      
+    </url-mapping>
+    <url-mapping id="confirmtopup">
+        <pattern value="/confirmtopup" />
+        <view-id value="/faces/secured/confirmtopup.xhtml"/>      
+    </url-mapping>    
+    
+    <url-mapping id="home">
+        <pattern value="/home" />
+        <view-id value="/faces/secured/home.xhtml"/>      
+    </url-mapping>
+    
+    <url-mapping id="adminHome">
+        <pattern value="/adminHome" />
+        <view-id value="/faces/admin/adminHome.xhtml"/>      
+    </url-mapping>
+              
+    
+    <url-mapping id="transfercredit">
+        <pattern value="/transfercredit" />
+        <view-id value="/faces/secured/transfercredit.xhtml"/>      
+    </url-mapping>  
+    <url-mapping id="transactionhistory">
+        <pattern value="/transactionhistory" />
+        <view-id value="/faces/secured/transactionhistory.xhtml"/>      
+    </url-mapping>
+    
+    <url-mapping id="verifycode">
+        <pattern value="/verifycode" />
+        <view-id value="/faces/verifycode.xhtml"/>      
+    </url-mapping>
+    
+    <url-mapping id="adminLogon">
+        <pattern value="/adminLogon" />
+        <view-id value="/faces/adminLogon.xhtml"/>      
+    </url-mapping>
+    
+    <url-mapping id="addcredit">
+        <pattern value="/addcredit" />
+        <view-id value="/faces/admin/addcredit.xhtml"/>      
+    </url-mapping>
+    <url-mapping id="topup">
+        <pattern value="/topup" />
+        <view-id value="/faces/secured/topup.xhtml"/>      
+    </url-mapping>
+    
+    <url-mapping id="processedsms">
+        <pattern value="/processedsms" />
+        <view-id value="/faces/secured/processedsms.xhtml"/>      
+    </url-mapping>         
+    <url-mapping id="inprogresssms">
+        <pattern value="/inprogresssms" />
+        <view-id value="/faces/secured/inprogresssms.xhtml"/>      
+    </url-mapping>             
+    <url-mapping id="scheduledsms">
+        <pattern value="/scheduledsms" />
+        <view-id value="/faces/secured/scheduledsms.xhtml"/>      
+    </url-mapping>     
+    
+     <url-mapping id="auditreport">
+        <pattern value="/auditreport" />
+        <view-id value="/faces/secured/auditreport.xhtml"/>      
+    </url-mapping>
+    <url-mapping id="reseller">
+        <pattern value="/reseller" />
+        <view-id value="/faces/secured/reseller.xhtml"/>      
+    </url-mapping>
+    
+    <url-mapping id="outmessages">
+        <pattern value="/outmessages" />
+        <view-id value="/faces/admin/outmessages.xhtml"/>      
+    </url-mapping>
+    <url-mapping id="createadmin">
+        <pattern value="/createadmin" />
+        <view-id value="/faces/admin/createadmin.xhtml"/>      
+    </url-mapping>
+    
+    <url-mapping id="editprofile">
+        <pattern value="/editprofile" />
+        <view-id value="/faces/admin/editprofile.xhtml"/>      
+    </url-mapping>
+    
+    <url-mapping id="customersProfile">
+        <pattern value="/customersProfile" />
+        <view-id value="/faces/admin/customersprofile.xhtml"/>      
+    </url-mapping>
+        
+    <url-mapping id="tranxhistory">
+        <pattern value="/tranxhistory" />
+        <view-id value="/faces/admin/transactionhistory.xhtml"/>      
+    </url-mapping>
+
+    <url-mapping id="outmessages">
+        <pattern value="/outmessages" />
+        <view-id value="/faces/admin/outmessages.xhtml"/>      
+    </url-mapping>
+    <url-mapping id="sendsms">
+        <pattern value="/sendsms" />
+        <view-id value="/faces/secured/sendsms.xhtml"/>      
+    </url-mapping>
+    <url-mapping id="bulksms">
+        <pattern value="/bulksms" />
+        <view-id value="/faces/secured/bulksms.xhtml"/>      
+    </url-mapping>
+    <url-mapping id="addressbook">
+        <pattern value="/addressbook" />
+        <view-id value="/faces/secured/addressbook.xhtml"/>      
+    </url-mapping>
+    <url-mapping id="settings">
+        <pattern value="/settings" />
+        <view-id value="/faces/secured/settings.xhtml"/>      
+    </url-mapping>
+</pretty-config>
