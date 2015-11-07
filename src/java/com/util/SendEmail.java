@@ -23,38 +23,7 @@ import org.apache.commons.mail.MultiPartEmail;
  * @author Ahmed
  */
 public class SendEmail {
-    
-    static boolean sendADEmail(Email msg) {
-            boolean sent =false;
-           try {
-            // Create the email message            
-            HtmlEmail email = new HtmlEmail();
-            email.setHostName("172.16.10.184");
-            email.setSmtpPort(25);
-            email.addTo(msg.getEmailAddress());
-            email.setFrom("twofactor@unionbankng.com","Union Bank");
-            if(msg.getSubject().equalsIgnoreCase("SPECIAL")){
-            email.setSubject("MANUAL ACTIVATION");
-            }else{email.setSubject("Two Factor Authentication Details");}
-            String formattedEmail = formatEmail(msg.getMessage());
-            // set the html message
-            email.setHtmlMsg(formattedEmail);
-            // set the alternative message
-            email.setTextMsg("Your email client does not support HTML messages");
-            // send the email
-            Log.l.infoLog.info("Sending email to "+msg.getEmailAddress());            
-            String response = email.send();
-            sent=true;
-            Log.l.infoLog.info("Email Sent to :"+msg.getEmailAddress()+ "  Response:"+response);
-            return sent;
-        } catch (EmailException ex) {
-            Log.l.infoLog.info(ex);            
-            return sent;
-        } catch (Exception ex) {
-            Log.l.infoLog.info(ex);            
-            return sent;
-        } 
-    }
+        
     private static String formatEmail(String cid) {
         String email ="<html><head><title>Two Factor Authentication</title>" +
                 "<style type='text/css'>div{margin:0px;padding:0px;}</style>" +
@@ -71,10 +40,10 @@ public class SendEmail {
         MultiPartEmail email = new MultiPartEmail();
         try 
         {               
-            email.setHostName("mail.smssolutions.com.ng");
+            email.setHostName(Log.EMAILHOST);
             email.setSmtpPort(25);
-            email.setAuthenticator(new DefaultAuthenticator("support@smssolutions.com.ng", "customer2015"));            
-            email.setFrom("support@smssolutions.com.ng");
+            email.setAuthenticator(new DefaultAuthenticator(Log.EMAILADDRESS, Log.EMAIL_PASSWORD));            
+            email.setFrom(Log.EMAILADDRESS);
             email.setSubject(msg.getSubject());
             email.setMsg(msg.getMessage()+ResponseCode.EMAIL_SIGNATURE);
             email.addTo(msg.getEmailAddress());

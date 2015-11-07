@@ -32,10 +32,11 @@ public final class Log
     public static String debitAccountNumber2;
     public static String USERNAME_PROPERTY;
     public static String PASSWORD_PROPERTY;
+    public static String EMAIL_PASSWORD;
     public static String ENDPOINT_ADDRESS_PROPERTY;
-    public static String ModuleCredentials;
-    public static String RequestModule;
-    private String propsFile="C:/Temp/vascotwofa.properties";    
+    public static String ModuleCredentials,clientId;
+    public static String RequestModule,EMAILHOST,SECRETKEY;
+    private String propsFile="C:/Temp/bulksms.properties";    
     private String INFO_LOG_FILE,FATAL_LOG_FILE, ERROR_LOG_FILE, MAX_LOGFILE_SIZE = "100MB",INFO_LOG_LEVEL, ERROR_LOG_LEVEL,FATAL_LOG_LEVEL;
     public int MAX_NUM_LOGFILES = 10;
     public Logger infoLog, errorLog, fatalLog;
@@ -64,7 +65,12 @@ public final class Log
                         MAX_LOGFILE_SIZE=props.getProperty("MAX_LOGFILE_SIZE");
                         INFO_LOG_FILE=props.getProperty("INFO_LOG_FILE");
                         FATAL_LOG_FILE=props.getProperty("FATAL_LOG_FILE");
-                        ERROR_LOG_FILE=props.getProperty("ERROR_LOG_FILE");                                                
+                        ERROR_LOG_FILE=props.getProperty("ERROR_LOG_FILE");         
+                        EMAIL_PASSWORD=props.getProperty("EMAIL_PASSWORD"); 
+                        EMAILADDRESS=props.getProperty("EMAIL_PASSWORD"); 
+                        EMAILHOST=props.getProperty("EMAILHOST"); 
+                        SECRETKEY=props.getProperty("SECRETKEY"); 
+                        clientId=props.getProperty("clientId"); 
                         
 		} catch (IOException ioe)
                 {

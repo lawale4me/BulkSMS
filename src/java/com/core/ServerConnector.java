@@ -6,6 +6,7 @@
 package com.core;
 
 
+import com.util.Log;
 import com.util.QTResponse;
 import com.util.Util;
 import java.io.InputStream;
@@ -113,12 +114,12 @@ public class ServerConnector {
         boolean gotres=false;
         
         try {
-            String secretKey="DSAKJFD9873JKDS32DFDSKJ389FF2";            
+            String secretKey=Log.SECRETKEY;            
             String endpoint="https://paywith.quickteller.com/api/v2/transaction.json";
             HashMap params=new HashMap<String,String>();
             HashMap headers=new HashMap<String,String>();
             params.put("transRef", URLEncoder.encode(txRef));          
-            headers.put("clientid", "smssolutions.com.ng");
+            headers.put("clientid", Log.clientId);
             headers.put("Hash", Util.hash(txRef+secretKey));
             
             
